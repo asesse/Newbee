@@ -5,8 +5,12 @@
 <%= element.location%>
 <%= element.date %>
 <%= element.description %>
+<%= link_to "More informations", activity_path(element) %> 
+<%= link_to "Edit the activity", edit_activity_path(element) %>
+<%= link_to "Destroy the activity", activity_path(element) %>
 <% end  %>
+<br>
+<%= link_to "Create an activity", new_activity_path %>
 
 
-<%= link_to "Créer une activité", new_activity_path%>
  
