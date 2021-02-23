@@ -1,0 +1,2 @@
+class JoinedActivitiesController < ApplicationController
+end
