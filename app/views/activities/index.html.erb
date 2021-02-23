@@ -1,0 +1,12 @@
+<h1> Liste des activités</h1>
+<% @activities.each do |element| %>
+<br>
+<%= element.name %>
+<%= element.location%>
+<%= element.date %>
+<%= element.description %>
+<% end  %>
+
+
+<%= link_to "Créer une activité", new_activity_path%>
+ 
