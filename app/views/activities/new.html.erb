@@ -1,0 +1,21 @@
+
+<h3>Please add your new activity below:</h3>
+
+<div class="new_activity">
+
+<%= simple_form_for(@activity) do |a| %>
+
+  <%= a.input :name %>
+  <%= a.input :location %>
+  <%= a.input :description %>
+  <%= a.input :date %>
+  <%= a.association :category%>
+
+
+  <button type="button" class="btn btn-primary"> <%= a.button :submit %> </button>
+
+</div>
+
+<% end %>
+
+
