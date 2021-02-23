@@ -1,0 +1,53 @@
+<h1> <%= @user.username %> </h1>
+<ul>
+  <li>photo</li>
+  <li>@user.age</li>
+  <li>@user.gender</li>
+  <li>@user.language</li>
+  <p>description</p>
+</ul>
+<table>
+  <thead>
+    <th>Activity</th>
+    <th>Category</th>
+    <th>Location</th>
+    <th>Date</th>
+    <th>Number of Participan</th>
+  </thead>
+  <tbody>
+    <tr>
+    <% @joined_activities.activity.each do |done_activity| %>
+      <td> <%= done_activity.name %> </td>
+      <td> <%= done_activity.category.name %> </td>
+      <td> <%= done_activity.location %> </td>
+      <td> <%= done_activity.activity.date %> </td>
+    <% end %>
+    <td> <%= @joined_activities.users.length %> </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- <table>
+  <thead>
+    <th>
+      <strong>Ingredient</strong>
+    </th>
+    <th>
+      <strong>Dose</strong>
+    </th>
+  </thead>
+  <tbody>
+    <% @cocktail.doses.each do |dose| %>
+    <tr>
+      <td><%= dose.ingredient.name %></td>
+      <td><%= dose.description %> </td>
+      <td> <%= link_to "Delete", dose_path(dose), method: 'delete' %> </td>
+     </tr>
+    <% end %>
+  </tbody>
+</table> -->
+
+<%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail) %>
+
+<%= link_to "Let see all the cocktails", cocktails_path %>
