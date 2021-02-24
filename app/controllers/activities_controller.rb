@@ -4,6 +4,15 @@ class ActivitiesController < ApplicationController
   def index
     @activities = Activity.all
     @activities = Activity.where(category_id: params[:query][:category]) if params[:query].present?
+
+    @markers = @activities.geocoded.map do |position|
+      {
+        lat: position.latitude,
+        lng: position.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { activity: position })
+
+      }
+    end
   end
 
   def show
