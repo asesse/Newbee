@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [ :show ]
 
-  def index 
+  def index
     @activities = Activity.all
     @activities = Activity.where(category_id: params[:query][:category]) if params[:query].present?
 
@@ -16,7 +16,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-  
+    @joined_activities = @activity.joined_activities
   end
 
   def new
