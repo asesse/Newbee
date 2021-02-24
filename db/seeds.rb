@@ -5,9 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+JoinedActivity.destroy_all
+Activity.destroy_all
 User.destroy_all
 Category.destroy_all
-Activity.destroy_all
+
 
 users = User.create!([{username: "martin", email: "martin@gmail.com", password: "123456", birthdate: (Date.today - 20.years), age: 20, gender: "male", language: "french"}, {username: "emile", email: "emile@gmail.com", password:"123456", birthdate: (Date.today - 20.years), age: 20, gender: "male", language: "french"}, {username: "seb", email: "seb@gmail.com", password:"123456", birthdate: (Date.today - 20.years), age: 20, gender: "male", language: "french"}, {username: "arthur", email: "arthur@gmail.com", password:"123456", birthdate: (Date.today - 20.years), age: 20, gender: "male", language: "french"}, {username: "alex", email: "alex@gmail.com", password:"123456", birthdate: (Date.today - 20.years), age: 20, gender: "male", language: "english"}])
 categories = Category.create!([{name: "sport"}, {name: "cultural"}, {name: "drink"}, {name: "restaurant"}, {name: "culunary"}, {name: "mechanical"}, {name: "manual"}, {name: "non-classified"}])

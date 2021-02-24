@@ -1,4 +1,10 @@
 <h1> Liste des activités</h1>
+
+<%= simple_form_for(:query, url: activities_path, method: :get) do |f| %>
+      <%= f.input :category, collection: Category.all %>
+      <%= f.submit %>
+<% end %>
+  
 <% @activities.each do |element| %>
 <br>
 <%= element.name %>

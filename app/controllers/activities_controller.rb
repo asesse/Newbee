@@ -3,9 +3,11 @@ class ActivitiesController < ApplicationController
 
   def index 
     @activities = Activity.all
+    @activities = Activity.where(category_id: params[:query][:category]) if params[:query].present?
   end
 
   def show
+  
   end
 
   def new
