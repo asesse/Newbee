@@ -8,14 +8,17 @@ class JoinedActivitiesController < ApplicationController
   end
 
   def create
-    @joined_activity = JoinedActivity.new(joined_activity_params)
-    @joined_activity.user = current_user
 
-    if @joined_activity.save
-      redirect_to activity_path(@activity), notice: "You have joined this activity"
+    if current_user[:id].nil?
+      redirect_to activities_path, notice: "Please log in to join an activity"
     else
-      render :new
-    end
+      @joined_activity = JoinedActivity.new
+      @joined_activity.activity_id = params[:activity_id]
+      @joined_activity.user_id = current_user[:id]
+      @joined_activity.status = "pending"
+      @joined_activity.save
+      redirect_to activities_path, notice: "Your request was sent"
+     end
   end
 
   def edit
@@ -34,6 +37,6 @@ class JoinedActivitiesController < ApplicationController
 
   def set_joined_activity
     @joined_activity = JoinedActivity.find(params[:id])
-  end
-
+  end     
 end
+
