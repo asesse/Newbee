@@ -4,19 +4,20 @@
       <%= f.input :category, collection: Category.all %>
       <%= f.submit %>
 <% end %>
-  
+
 <% @activities.each do |element| %>
 <br>
 <%= element.name %>
 <%= element.location%>
 <%= element.date %>
 <%= element.description %>
-<%= link_to "More informations", activity_path(element) %> 
-<%= link_to "Edit the activity", edit_activity_path(element) %>
-<%= link_to "Destroy the activity", activity_path(element) %>
+<%= link_to "More informations", activity_path(element) %>
+  <% if check_authorized(@activity, current_user) %>
+    <%= link_to "Edit the activity", edit_activity_path(element) %>
+    <%= link_to "Destroy the activity", activity_path(element) %>
+  <% end %>
 <% end  %>
 <br>
 <%= link_to "Create an activity", new_activity_path %>
 
 
- 
