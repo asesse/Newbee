@@ -5,3 +5,27 @@
 <p>User: <%= @activity.user.username %> </p>
 <p>Category: <%= @activity.category.name %> </p>
 
+
+<% if check_authorized(@activity, current_user) %>
+<table>
+  <thead>
+    <th>Participant</th>
+    <th>Status</th>
+    <th>Edit Status</th>
+  </thead>
+  <tbody>
+    <tr>
+      <% @joined_activities.each do |joined_activity| %>
+      <td> <%= joined_activity.user.username %> </td>
+      <td> <%= joined_activity.status %> </td>
+      <td> <%= simple_form_for joined_activity do |f| %>
+        <%= f.input :status, collection: JoinedActivity::STATUS %>
+        <%= f.submit %>
+        <% end %>
+
+      </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+<% end %>
