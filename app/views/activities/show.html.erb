@@ -18,7 +18,7 @@
       <% @joined_activities.each do |joined_activity| %>
       <td> <%= joined_activity.user.username %> </td>
       <td> <%= joined_activity.status %> </td>
-      <td> <%= simple_form_for joined_activity do |f| %>
+      <td> <%= simple_form_for [@activity, joined_activity] do |f| %>
         <%= f.input :status, collection: JoinedActivity::STATUS %>
         <%= f.submit %>
         <% end %>
