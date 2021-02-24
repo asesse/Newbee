@@ -12,7 +12,7 @@
 <%= element.date %>
 <%= element.description %>
 <%= link_to "More informations", activity_path(element) %>
-  <% if check_authorized(@activity, current_user) %>
+  <% if check_authorized(element, current_user) %>
     <%= link_to "Edit the activity", edit_activity_path(element) %>
     <%= link_to "Destroy the activity", activity_path(element) %>
   <% end %>
@@ -20,4 +20,7 @@
 <br>
 <%= link_to "Create an activity", new_activity_path %>
 
-
+<div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
