@@ -30,9 +30,12 @@
 </table>
 <% end %>
 
+<% if @current_user_joined_activity %>
+<p>request status: <%= @current_user_joined_activity.status %></p>
+<% else %>
 <p> <%= link_to 'Join activity', activity_joined_activities_path(@activity), method: :post %> </p>
+<% end %>
 <p> <%= link_to 'Go back to all activities', activities_path %> </p>
-
 
 <table class="table">
   <thead>
