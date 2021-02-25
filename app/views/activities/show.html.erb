@@ -18,7 +18,7 @@
       <% @joined_activities.each do |joined_activity| %>
       <td> <%= link_to joined_activity.user.username, user_path(@user) %> </td>
       <td> <%= joined_activity.status %> </td>
-      <td> <%= simple_form_for joined_activity do |f| %>
+      <td> <%= simple_form_for [@activity, joined_activity] do |f| %>
         <%= f.input :status, collection: JoinedActivity::STATUS %>
         <%= f.submit %>
         <% end %>
@@ -28,3 +28,8 @@
   </tbody>
 </table>
 <% end %>
+
+<p> <%= link_to 'Join activity', activity_joined_activities_path(@activity), method: :post %> </p>
+
+
+<p> <%= link_to 'Go back to all activities', activities_path %> </p>
