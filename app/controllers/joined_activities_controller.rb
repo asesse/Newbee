@@ -37,4 +37,3 @@ class JoinedActivitiesController < ApplicationController
     @joined_activity = JoinedActivity.find(params[:id])
   end
 end
-

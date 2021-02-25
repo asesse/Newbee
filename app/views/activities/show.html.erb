@@ -31,6 +31,37 @@
 <% end %>
 
 <p> <%= link_to 'Join activity', activity_joined_activities_path(@activity), method: :post %> </p>
-
-
 <p> <%= link_to 'Go back to all activities', activities_path %> </p>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="3"> Messages </th>
+    </tr>
+    <tr>
+      <th colspan="1"> User </th>
+      <th colspan="2"> Comment </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @all_messages. each do |message| %>
+      <tr>
+        <td colspan="1"> <%= message.user.username%></td>
+        <td colspan="2"> <%= message.content %> </td>
+      </tr>
+    <% end  %>
+  </tbody>
+</table>
+
+<br>
+
+<% if current_user.nil? %>
+  <p> Please sign in to leave a comment!</p>
+  <% else %>
+    <p> Please add your message below: </p>
+      <%= simple_form_for [@activity, @message] do |f| %>
+      <%= f.input :content %>
+      <%= f.submit %>
+    <% end %>
+<% end %>

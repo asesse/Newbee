@@ -17,10 +17,8 @@ class ActivitiesController < ApplicationController
 
   def show
     @joined_activities = @activity.joined_activities
-    # @cookiemonster -- > @activity[:id]
-    # @all_activities = JoinedActivities.all
-    # @all_activities.find[:cookiemonster]
-
+    @all_messages = @activity.messages
+    @message = Message.new
   end
 
   def new
