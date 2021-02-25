@@ -1,5 +1,5 @@
 class JoinedActivitiesController < ApplicationController
-
+  before_action :authenticate_user!
 
   before_action :set_joined_activity, only: [:edit, :update]
 
@@ -8,17 +8,12 @@ class JoinedActivitiesController < ApplicationController
   end
 
   def create
-
-    if current_user[:id].nil?
-      redirect_to activities_path, notice: "Please log in to join an activity"
-    else
       @joined_activity = JoinedActivity.new
       @joined_activity.activity_id = params[:activity_id]
       @joined_activity.user_id = current_user[:id]
       @joined_activity.status = "Pending"
       @joined_activity.save
-      redirect_to activity_path(@joined_activity.activity), notice: "Your request was sent"
-     end
+      redirect_to activities_path, notice: "Your request has been sent"
   end
 
   def edit
@@ -40,4 +35,3 @@ class JoinedActivitiesController < ApplicationController
     @joined_activity = JoinedActivity.find(params[:id])
   end
 end
-

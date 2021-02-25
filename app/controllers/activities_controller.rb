@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: [ :show ]
+  before_action :set_activity, only: [:show]
 
   def index
     @activities = Activity.all
@@ -18,10 +18,11 @@ class ActivitiesController < ApplicationController
 
   def show
     @joined_activities = @activity.joined_activities
-    # @cookiemonster -- > @activity[:id]
-    # @all_activities = JoinedActivities.all
-    # @all_activities.find[:cookiemonster]
-
+    if user_signed_in?
+      @current_user_joined_activity = current_user.joined_activities.find_by(activity_id: @activity.id)
+    end
+    @all_messages = @activity.messages
+    @message = Message.new
   end
 
   def new
@@ -39,8 +40,8 @@ class ActivitiesController < ApplicationController
     end
   end
 
-
 private
+
   def set_activity
     @activity = Activity.find(params[:id])
   end
