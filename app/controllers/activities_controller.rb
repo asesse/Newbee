@@ -3,14 +3,11 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = Activity.all
-    @activities = Activity.where(category_id: params[:query][:category]) if params[:query].present? && params[:query][:category].present?
-    @activities = @activities.where(date: params[:query][:start_date]..params[:query][:end_date]) if params[:query].present?  && params[:query][:start_date].present? && params[:query][:end_date]
-    
-
-      @markers = @activities.geocoded.map do |position|
-      { 
     @activities = Activity.search_by_name_and_description(params[:query][:user_search]) if check_user_search
-    @activities = Activity.where(category_id: params[:query][:category]) if category_search
+    @activities = @activities.where(category_id: params[:query][:category]) if category_search
+
+    @activities = @activities.where(date: params[:query][:start_date]..params[:query][:end_date]) if params[:query].present?  && params[:query][:start_date].present? && params[:query][:end_date]
+
     @markers = @activities.geocoded.map do |position|
       {
         lat: position.latitude,
@@ -30,7 +27,6 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    #check_authorized
     @activity = Activity.new
   end
 
@@ -44,7 +40,7 @@ class ActivitiesController < ApplicationController
     end
   end
 
-private
+  private
 
   def category_search
     params[:query].present? && params[:query][:category].present?
