@@ -1,6 +1,8 @@
-<h2><%= activity.name %></h2>
-<p><%= activity.location %></p>
 
-<p> <%= link_to "See this activity", activity_path(activity) %> </p>
 
+<div class="map-info-card">
+  <h2><%= activity.name.capitalize! %></h2>
+  <p><%= activity.location.capitalize! %></p>
+  <p> <%= link_to "See this activity", activity_path(activity) %> </p>
+</div>
 

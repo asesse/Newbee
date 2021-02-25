@@ -5,16 +5,17 @@
 
 <%= simple_form_for(@activity) do |a| %>
 
-  <%= a.input :name %>
-  <%= a.input :location %>
-  <%= a.input :description %>
+  <%= a.input :name, placeholder: "What will you be doing?" %>
+  <%= a.input :location, placeholder: "Where will it take place?" %>
+  <%= a.input :description, placeholder: "Some relevant details." %>
   <%= a.input :date %>
   <%= a.association :category %>
-  <p> Who can join the activity </p>
+  <br>
+  <h4> Who can join the activity </h4 class="center">
   <%= a.input :age, collection: Activity::AUTORISATION %>
-  <%= a.input :language, collection: Activity::LANGUAGE_AUTORISATION  %>
-  <%= a.input :gender, collection: Activity::GENDER_AUTORISATION  %>
- 
+  <%= a.input :language, collection: Activity::LANGUAGE_AUTORISATION %>
+  <%= a.input :gender, collection: Activity::GENDER_AUTORISATION %>
+
 
 
   <button type="button" class="btn btn-primary"> <%= a.button :submit %> </button>

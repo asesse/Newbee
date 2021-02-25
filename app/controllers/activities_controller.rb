@@ -4,7 +4,6 @@ class ActivitiesController < ApplicationController
   def index
     @activities = Activity.all
     @activities = Activity.search_by_name_and_description(params[:query][:user_search]) if check_user_search
-
     @activities = Activity.where(category_id: params[:query][:category]) if category_search
     @markers = @activities.geocoded.map do |position|
       {
