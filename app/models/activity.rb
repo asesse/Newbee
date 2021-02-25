@@ -13,16 +13,17 @@ class Activity < ApplicationRecord
   validates :language, inclusion: { in: LANGUAGE_AUTORISATION }
   GENDER_AUTORISATION = ["male", "female", ""]
   validates :gender, inclusion: { in: GENDER_AUTORISATION }
+
+
   def age_valid?(age)
    age_range = self.age.split("-").map{|num| num.to_i}
-      age >= age_range[0] && age <= age_range[1]
+   age >= age_range[0] && age <= age_range[1] 
   end
 
   def allow?(current_user)
+   (self.language == "" || current_user.language == self.language) && (self.gender == "" || current_user.gender == self.gender) && (self.age == "" || age_valid?(current_user.age))
+  end 
 
-       (self.language == "" || current_user.language == self.language) && (self.gender == "" || current_user.gender == self.gender) && (self.age == "" || age_valid?(current_user.age))
-
-  end
 
   include PgSearch::Model
   pg_search_scope :search_by_name_and_description,

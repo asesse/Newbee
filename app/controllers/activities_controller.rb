@@ -3,6 +3,12 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = Activity.all
+    @activities = Activity.where(category_id: params[:query][:category]) if params[:query].present? && params[:query][:category].present?
+    @activities = @activities.where(date: params[:query][:start_date]..params[:query][:end_date]) if params[:query].present?  && params[:query][:start_date].present? && params[:query][:end_date]
+    
+
+      @markers = @activities.geocoded.map do |position|
+      { 
     @activities = Activity.search_by_name_and_description(params[:query][:user_search]) if check_user_search
     @activities = Activity.where(category_id: params[:query][:category]) if category_search
     @markers = @activities.geocoded.map do |position|
