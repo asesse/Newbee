@@ -1,6 +1,13 @@
 
 <div class="homepage">
 
+<%= simple_form_for(:query, url: activities_path, method: :get) do |f| %>
+      <%= f.input :category, collection: Category.all %>
+      <%= f.input :date, collection: Time.now %>    
+      <%= f.submit %>
+<% end %>
+
+
   <div id="content">
     <h1> Liste des activités</h1>
 

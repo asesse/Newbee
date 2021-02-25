@@ -29,6 +29,13 @@
 </table>
 <% end %>
 
+<% if @activity.allow?(current_user)  %>
+<p> <%= link_to 'Join activity', activity_joined_activities_path(@activity), method: :post  %> </p>
+<% else  %>
+<%= "You can't participate"  %>
+<% end %>
+
+
 <% if @current_user_joined_activity %>
 <p>request status: <%= @current_user_joined_activity.status %></p>
 <% else %>
