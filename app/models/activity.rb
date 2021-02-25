@@ -6,6 +6,12 @@ class Activity < ApplicationRecord
   has_many :users, through: :joined_activities
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
+  
+  validates :name, presence: true
+  scope :having_dob_between, ->(start_date, end_date) { where(dob: start_date..end_date) }
+
+
+
  
   AUTORISATION = ["18-27","28-35","35-45", "45-55","55-85", ""]
   validates :age, inclusion: { in: AUTORISATION }

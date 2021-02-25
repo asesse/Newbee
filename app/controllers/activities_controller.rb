@@ -3,11 +3,13 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = Activity.all
-    @activities = Activity.where(category_id: params[:query][:category]) if params[:query].present?
+    @activities = Activity.where(category_id: params[:query][:category]) if params[:query].present? && params[:query][:category].present?
+    @activities = @activities.where(date: params[:query][:start_date]..params[:query][:end_date]) if params[:query].present?  && params[:query][:start_date].present? && params[:query][:end_date]
+    
 
 
-    @markers = @activities.geocoded.map do |position|
-      {
+      @markers = @activities.geocoded.map do |position|
+      { 
         lat: position.latitude,
         lng: position.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { activity: position })
