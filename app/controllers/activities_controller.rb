@@ -3,15 +3,14 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = Activity.all
-    @activities = Activity.where(category_id: params[:query][:category]) if params[:query].present?
+    @activities = Activity.search_by_name_and_description(params[:query][:user_search]) if check_user_search
 
-
+    @activities = Activity.where(category_id: params[:query][:category]) if category_search
     @markers = @activities.geocoded.map do |position|
       {
         lat: position.latitude,
         lng: position.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { activity: position })
-
       }
     end
   end
@@ -41,6 +40,14 @@ class ActivitiesController < ApplicationController
   end
 
 private
+
+  def category_search
+    params[:query].present? && params[:query][:category].present?
+  end
+
+  def check_user_search
+    params[:query].present? && params[:query][:user_search].present?
+  end
 
   def set_activity
     @activity = Activity.find(params[:id])

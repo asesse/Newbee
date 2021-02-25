@@ -4,7 +4,8 @@
     <h1> Liste des activités</h1>
       <%= simple_form_for(:query, url: activities_path, method: :get) do |f| %>
             <%= f.input :category, collection: Category.all %>
-            <%= f.input :date, collection: Time.new("%d/%m/%Y") %>    
+            <%= f.input :date, collection: Time.new("%d/%m/%Y") %>
+            <%= f.input :user_search %>
             <%= f.submit %>
       <% end %>
         <% @activities.each do |element| %>
