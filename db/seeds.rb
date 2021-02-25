@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 JoinedActivity.destroy_all
+Message.destroy_all
 Activity.destroy_all
 User.destroy_all
 Category.destroy_all
@@ -21,3 +22,5 @@ activities = Activity.create!([{name: "yoga", location: "bois de la Cambre", dat
 joined_activities = JoinedActivity.create!([{status: "Pending", user: users.first, activity: activities.first},
   {status: "Accepted", user: users.first, activity: activities.last},
 {status: "Rejected", user: users[2], activity: activities.first}])
+messages = Message.create!(content: "Can I bring my dog?", user: users.first, activity: activities.first)
+

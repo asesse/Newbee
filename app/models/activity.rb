@@ -1,5 +1,6 @@
 class Activity < ApplicationRecord
   has_many :joined_activities
+  has_many :messages
   belongs_to :category
   belongs_to :user
   has_many :users, through: :joined_activities
