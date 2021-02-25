@@ -18,7 +18,7 @@
     <tr>
       <td> <%= link_to joined_activity.user.username, user_path(joined_activity.user) %> </td>
       <td> <%= joined_activity.status %> </td>
-      <td> <%= simple_form_for [@activity, joined_activity], defaults: { input_html: { class: 'form-inline' } } do |f| %>
+      <td> <%= simple_form_for [@activity, joined_activity], html: { class: 'form-inline' } do |f| %>
         <%= f.input :status, collection: JoinedActivity::STATUS %>
         <%= f.submit %>
         <% end %>
