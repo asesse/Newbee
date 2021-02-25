@@ -6,6 +6,9 @@
   <li> <%= @user.language %> </li>
   <p> <%= @user.description %> </p>
 </ul>
+
+<% if @joined_activities.present?  %>
+<h2>Joined Activities</h2>
 <table>
   <thead>
     <th>Activity</th>
@@ -15,14 +18,41 @@
     <th>Number of Participan</th>
   </thead>
   <tbody>
-    <tr>
     <% @joined_activities.each do |joined_activity| %>
-      <td> <%= joined_activity.name %> </td>
+    <tr>
+      <td> <%= link_to joined_activity.name, activity_path(joined_activity) %> </td>
       <td> <%= joined_activity.category.name %> </td>
       <td> <%= joined_activity.location %> </td>
       <td> <%= joined_activity.date %> </td>
       <td> <%= joined_activity.users.length %> </td>
-    <% end %>
     </tr>
+    <% end %>
   </tbody>
 </table>
+<% end %>
+
+<% if @created_activities.present?  %>
+<h2>Created Activities</h2>
+<table>
+  <thead>
+    <th>Activity</th>
+    <th>Category</th>
+    <th>Location</th>
+    <th>Date</th>
+    <th>Number of Participan</th>
+  </thead>
+  <tbody>
+    <% @created_activities.each do |created_activity| %>
+    <tr>
+      <td> <%= link_to created_activity.name, activity_path(created_activity) %> </td>
+      <td> <%= created_activity.category.name %> </td>
+      <td> <%= created_activity.location %> </td>
+      <td> <%= created_activity.date %> </td>
+      <td> <%= created_activity.users.length %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+
+<p> <%= link_to 'Go back to all activities', activities_path %> </p>
