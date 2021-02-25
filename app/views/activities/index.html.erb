@@ -6,9 +6,9 @@
             <%= f.input :category, collection: Category.all, selected: params.dig(:query, :category) %>
             <%= f.input :start_date, as: :date, html5: true, input_html: {value: params.dig(:query, :start_date)} %>    
             <%= f.input :end_date, as: :date, html5: true, input_html: {value: params.dig(:query, :end_date)} %>    
-
             <%= f.submit %>
       <% end %>
+      <br>
         <% @activities.each do |element| %>
     <li class="list-group-item"> 
     <%= element.name %>
