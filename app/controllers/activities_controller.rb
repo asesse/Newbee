@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
     @activities = Activity.all
     @activities = Activity.where(category_id: params[:query][:category]) if params[:query].present?
 
+
     @markers = @activities.geocoded.map do |position|
       {
         lat: position.latitude,
@@ -46,6 +47,6 @@ private
   end
 
   def activity_params
-    params.require(:activity).permit(:name, :location, :description, :date, :category_id)
+    params.require(:activity).permit(:name, :location, :description, :date, :category_id, :age, :gender, :language)
   end
 end
