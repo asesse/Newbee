@@ -1,22 +1,13 @@
 
 <div class="homepage">
-
-<%= simple_form_for(:query, url: activities_path, method: :get) do |f| %>
-      <%= f.input :category, collection: Category.all %>
-      <%= f.input :date, collection: Time.now %>    
-      <%= f.submit %>
-<% end %>
-
-
   <div id="content">
     <h1> Liste des activités</h1>
-
-    <%= simple_form_for(:query, url: activities_path, method: :get) do |f| %>
-          <%= f.input :category, collection: Category.all %>
-          <%= f.submit %>
-    <% end %>
-
-    <% @activities.each do |element| %>
+      <%= simple_form_for(:query, url: activities_path, method: :get) do |f| %>
+            <%= f.input :category, collection: Category.all %>
+            <%= f.input :date, collection: Time.new("%d/%m/%Y") %>    
+            <%= f.submit %>
+      <% end %>
+        <% @activities.each do |element| %>
     <li class="list-group-item">
     <%= element.name %>
     <%= element.location%>

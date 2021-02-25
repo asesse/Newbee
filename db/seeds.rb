@@ -18,7 +18,7 @@ users = User.create!([{username: "martin", email: "martin@gmail.com", password: 
   {username: "alex", email: "alex@gmail.com", password:"123456", birthdate: (Date.today - 20.years), age: 20, gender: "male", language: "english"}])
 
 categories = Category.create!([{name: "sport"}, {name: "cultural"}, {name: "drink"}, {name: "restaurant"}, {name: "culunary"}, {name: "mechanical"}, {name: "manual"}, {name: "non-classified"}])
-activities = Activity.create!([{name: "yoga", location: "bois de la Cambre", date: Date.today, description: "1 hour", user: users.first, category: categories.first}, {name: "climbing", location: "la petite île", date: Date.today, description: "blabla", user: users.last, category: categories.last}])
+activities = Activity.create!([{name: "yoga", location: "bois de la Cambre", date: Date.today, description: "1 hour", user: users.first, category: categories.first, age: "", gender: "", language: ""}, {name: "climbing", location: "la petite île", date: Date.today, description: "blabla", user: users.last, category: categories.last, age: "", gender: "", language: ""}])
 joined_activities = JoinedActivity.create!([{status: "Pending", user: users.first, activity: activities.first},
   {status: "Accepted", user: users.first, activity: activities.last},
 {status: "Rejected", user: users[2], activity: activities.first}])
