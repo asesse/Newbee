@@ -3,14 +3,15 @@
   <div id="content">
     <h1> Liste des activités</h1>
       <%= simple_form_for(:query, url: activities_path, method: :get) do |f| %>
-            <%= f.input :category, collection: Category.all, selected: params.dig(:query, :category) %>
-            <%= f.input :start_date, as: :date, html5: true, input_html: {value: params.dig(:query, :start_date)} %>    
-            <%= f.input :end_date, as: :date, html5: true, input_html: {value: params.dig(:query, :end_date)} %>    
+            <%= f.input :category, collection: Category.all, selected: params.dig(:query, :category), include_blank: true %>
+            <%= f.input :start_date, as: :date, html5: true, input_html: {value: params.dig(:query, :start_date)} %>
+            <%= f.input :end_date, as: :date, html5: true, input_html: {value: params.dig(:query, :end_date)} %>
+            <%= f.input :user_search, input_html: {value: params.dig(:query, :user_search)}  %>
             <%= f.submit %>
       <% end %>
       <br>
         <% @activities.each do |element| %>
-    <li class="list-group-item"> 
+    <li class="list-group-item">
     <%= element.name %>
     <%= element.location%>
     <%= element.date %>
