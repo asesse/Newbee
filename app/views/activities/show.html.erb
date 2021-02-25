@@ -2,7 +2,7 @@
 <p>Location: <%= @activity.location %> </p>
 <p> Date: <%= @activity.date %></p>
 <p>Description: <%= @activity.description %> </p>
-<p>User: <%= @activity.user.username %> </p>
+<p>Creator: <%= link_to @activity.user.username, user_path(@activity.user) %> </p>
 <p>Category: <%= @activity.category.name %> </p>
 
 
@@ -14,17 +14,17 @@
     <th>Edit Status</th>
   </thead>
   <tbody>
+    <% @joined_activities.each do |joined_activity| %>
     <tr>
-      <% @joined_activities.each do |joined_activity| %>
-      <td> <%= link_to joined_activity.user.username, user_path(@user) %> </td>
+      <td> <%= link_to joined_activity.user.username, user_path(joined_activity.user) %> </td>
       <td> <%= joined_activity.status %> </td>
-      <td> <%= simple_form_for [@activity, joined_activity] do |f| %>
+      <td> <%= simple_form_for [@activity, joined_activity], defaults: { input_html: { class: 'form-inline' } } do |f| %>
         <%= f.input :status, collection: JoinedActivity::STATUS %>
         <%= f.submit %>
         <% end %>
       </td>
-      <% end %>
     </tr>
+    <% end %>
   </tbody>
 </table>
 <% end %>
