@@ -20,6 +20,8 @@ class ActivitiesController < ApplicationController
     if user_signed_in?
       @current_user_joined_activity = current_user.joined_activities.find_by(activity_id: @activity.id)
     end
+    @all_messages = @activity.messages
+    @message = Message.new
   end
 
   def new

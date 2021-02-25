@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :joined_activities
   has_many :activities, through: :joined_activities
   has_many :created_activities, class_name: "Activity"
-
+  validates :username, presence: true
   after_create :set_age
 
   def set_age
