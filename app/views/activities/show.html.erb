@@ -29,8 +29,10 @@
   </tbody>
 </table>
 <% end %>
-
-<p> <%= link_to 'Join activity', activity_joined_activities_path(@activity), method: :post %> </p>
-
+<% if @activity.allow?(current_user)  %>
+<p> <%= link_to 'Join activity', activity_joined_activities_path(@activity), method: :post  %> </p>
+<% else  %>
+<%= "You can't participate"  %>
+<% end %>
 
 <p> <%= link_to 'Go back to all activities', activities_path %> </p>

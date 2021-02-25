@@ -9,7 +9,12 @@
   <%= a.input :location %>
   <%= a.input :description %>
   <%= a.input :date %>
-  <%= a.association :category%>
+  <%= a.association :category %>
+  <p> Who can join the activity </p>
+  <%= a.input :age, collection: Activity::AUTORISATION %>
+  <%= a.input :language, collection: Activity::LANGUAGE_AUTORISATION  %>
+  <%= a.input :gender, collection: Activity::GENDER_AUTORISATION  %>
+ 
 
 
   <button type="button" class="btn btn-primary"> <%= a.button :submit %> </button>

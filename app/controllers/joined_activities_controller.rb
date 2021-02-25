@@ -17,7 +17,7 @@ class JoinedActivitiesController < ApplicationController
       @joined_activity.user_id = current_user[:id]
       @joined_activity.status = "Pending"
       @joined_activity.save
-      redirect_to activities_path, notice: "Your request was sent"
+      redirect_to activity_path(@joined_activity.activity), notice: "Your request was sent"
      end
   end
 
