@@ -1,0 +1,11 @@
+<% if check_authorized(@activity, current_user) %>
+  <div class="pending-participants">
+      <div> <%= link_to joined_activity.user.username, user_path(joined_activity.user) %> </div>
+      <div> <%= joined_activity.status %> </div>
+      <div> <%= simple_form_for [@activity, joined_activity], html: { class: 'form-inline' } do |f| %>
+        <%= f.input :status, collection: JoinedActivity::STATUS %>
+        <%= f.submit %>
+        <% end %>
+      </div>
+  </div>
+<% end %>

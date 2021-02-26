@@ -1,10 +1,36 @@
+.container {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+
 .activity-info {
 
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  color: black;
+  height: 300px;
+  border-radius: 3px;
+  padding: 5px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 
-  h5 {
+  h6 {
     color: $purple;
+    font-weight: bolder;
   }
+}
+
+
+.messages {
+
+}
+
+.pending-participants {
+  color: black;
+  border-radius: 3px;
+  padding: 5px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  align-items: flex-end;
 }

@@ -1,73 +1,61 @@
-<div class="activity-info">
-  <h5>Name:</h5> <%= @activity.name %>
-  <h5>Location:</h5> <%= @activity.location %>
-  <h5>Date:</h5> <%= @activity.date %>
-  <h5>Description:</h5>: <%= @activity.description %>
-  <h5>Creator:</h5> <%= link_to @activity.user.username, user_path(@activity.user) %>
-  <h5>Category:</h5>: <%= @activity.category.name %>
+
+<div class="container">
+      <div class="activity-info">
+          <p>Name: <%= @activity.name %></p>
+          <p>Location: <%= @activity.location %></p>
+          <p>Date: <%= @activity.date %></p>
+          <p>Description: <%= @activity.description %></p>
+          <p>Creator: <%= link_to @activity.user.username, user_path(@activity.user) %></p>
+          <p>Category: <%= @activity.category.name %></p>
+
+          <div>
+            <% if @activity.allow?(current_user)  %>
+            <p> <%= link_to 'Join activity', activity_joined_activities_path(@activity), method: :post  %> </p>
+            <% else  %>
+            <%= "You can't participate"  %>
+            <% end %>
+            <p class="create-button"> <%= link_to 'Go back to all activities', activities_path %> </p>
+          </div>
+      </div>
+
+
+    <div class="messages">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3"> Messages </th>
+          </tr>
+          <tr>
+            <th colspan="1"> User </th>
+            <th colspan="2"> Comment </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @all_messages. each do |message| %>
+            <tr>
+              <td colspan="1"> <%= message.user.username%></td>
+              <td colspan="2"> <%= message.content %> </td>
+            </tr>
+          <% end  %>
+        </tbody>
+      </table>
+
+        <% if current_user.nil? %>
+      <p> Please sign in to leave a comment!</p>
+      <% else %>
+        <p> Please add your message below: </p>
+          <%= simple_form_for [@activity, @message] do |f| %>
+          <%= f.input :content %>
+          <%= f.submit %>
+
+        <% end %>
+    <% end %>
+    </div>
+
+        <div class="participants">
+          <% @joined_activities.each do |joined_activity| %>
+          <%= render 'shared/activity_show', joined_activity: joined_activity %>
+          <% end %>
+        </div>
 </div>
 
-<% if check_authorized(@activity, current_user) %>
-<table>
-  <thead>
-    <th>Participant</th>
-    <th>Status</th>
-    <th>Edit Status</th>
-  </thead>
-  <tbody>
-    <% @joined_activities.each do |joined_activity| %>
-    <tr>
-      <td> <%= link_to joined_activity.user.username, user_path(joined_activity.user) %> </td>
-      <td> <%= joined_activity.status %> </td>
-      <td> <%= simple_form_for [@activity, joined_activity], html: { class: 'form-inline' }, remote: true do |f| %>
-        <%= f.input :status, collection: JoinedActivity::STATUS %>
-        <%= f.submit %>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>
-
-
-<% if @activity.allow?(current_user)  %>
-<p> <%= link_to 'Join activity', activity_joined_activities_path(@activity), method: :post  %> </p>
-<% else  %>
-<%= "You can't participate"  %>
-<% end %>
-
-
-<p> <%= link_to 'Go back to all activities', activities_path %> </p>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th colspan="3"> Messages </th>
-    </tr>
-    <tr>
-      <th colspan="1"> User </th>
-      <th colspan="2"> Comment </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @all_messages. each do |message| %>
-      <tr id="message-<%=message.id%>">
-        <td colspan="1"> <%= message.user.username%></td>
-        <td colspan="2"> <%= message.content %> </td>
-      </tr>
-    <% end  %>
-  </tbody>
-</table>
-
-<br>
-
-<% if current_user.nil? %>
-  <p> Please sign in to leave a comment!</p>
-  <% else %>
-    <p> Please add your message below: </p>
-      <%= simple_form_for [@activity, @message], remote: true do |f| %>
-      <%= f.input :content %>
-      <%= f.submit %>
-    <% end %>
-<% end %>
