@@ -5,13 +5,49 @@
 
 .homepage {
   display: flex;
+  justify-content: center;
   margin: 10px;
 }
 
 .create-button {
-  margin-top: 10px;
+  background-color: $purple;
+  color: white;
+  text-align: center;
+  border-radius: 3px;
+  border: 1px solid $purple;
+  padding: 15px 25px;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 #map {
   margin-left: 5px;
+}
+
+.filter-activity {
+  position: sticky;
+
+  h1 {
+    text-align: center;
+    font-family: $headers-font;
+    font-size: 400;
+    font-weight: bolder;
+    color: $yellow;
+  }
+}
+
+#filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-btn {
+  top: 8px;
+  position: relative;
+  margin-left: 4px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

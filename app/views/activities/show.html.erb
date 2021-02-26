@@ -1,10 +1,11 @@
-<p>Name: <%= @activity.name %> </p>
-<p>Location: <%= @activity.location %> </p>
-<p> Date: <%= @activity.date %></p>
-<p>Description: <%= @activity.description %> </p>
-<p>Creator: <%= link_to @activity.user.username, user_path(@activity.user) %> </p>
-<p>Category: <%= @activity.category.name %> </p>
-
+<div class="activity-info">
+  <h5>Name:</h5> <%= @activity.name %>
+  <h5>Location:</h5> <%= @activity.location %>
+  <h5>Date:</h5> <%= @activity.date %>
+  <h5>Description:</h5>: <%= @activity.description %>
+  <h5>Creator:</h5> <%= link_to @activity.user.username, user_path(@activity.user) %>
+  <h5>Category:</h5>: <%= @activity.category.name %>
+</div>
 
 <% if check_authorized(@activity, current_user) %>
 <table>
@@ -28,6 +29,7 @@
   </tbody>
 </table>
 <% end %>
+
 
 <% if @activity.allow?(current_user)  %>
 <p> <%= link_to 'Join activity', activity_joined_activities_path(@activity), method: :post  %> </p>
