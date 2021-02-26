@@ -1,6 +1,6 @@
 <div class= "container d-flex flex-column">
    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-    <h1> <%= current_user.username %>'profile</h1>
+    <h1> <%= @user.username %>'profile</h1>
     </div>
 
 
@@ -32,7 +32,7 @@
     <div>
       <h2>Created Activities</h2>
       <div class="activities_list">
-      <% @joined_activities.each do |created_activity| %>
+      <% @created_activities.each do |created_activity| %>
       <%= render 'shared/card_activity_joined', activity: created_activity %>
       <% end %>
       <% end %>
