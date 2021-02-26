@@ -1,15 +1,23 @@
 <div class="card-product-joined-activity">
   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
   <div class="card-joined-activity-infos">
+    <div class="texte-info">
     <h2>Activity</h2>
     <p> <%= link_to activity.name, activity_path(activity) %> </p>
+    </div>
+    <div class="texte-info">
     <h2>Category</h2>
     <p> <%= activity.category.name %> </p>
+    </div>
+    <div class="texte-info">
     <h2>Location</h2>
     <p> <%= activity.location %> </p>
+    </div>
     <h2>Date</h2>
     <p> <%= activity.date %> </p>
-     <h2>Number of Participan</h2>
+    <div class="texte-info">
+     <h2>Participan</h2>
     <p> <%= activity.users.length %> </p>
+    </div>
   </div>
 </div>
