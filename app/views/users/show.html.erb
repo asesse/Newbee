@@ -1,32 +1,42 @@
-<h1> <%= @user.username %> </h1>
-<ul>
-  <li>photo</li>
-  <li> <%= @user.age %> </li>
-  <li> <%= @user.gender %> </li>
-  <li> <%= @user.language %> </li>
-  <p> <%= @user.description %> </p>
-</ul>
+<div class= "container">    
+   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+  <h1> <%= current_user.username %>'profile</h1>
+    </div>
+  
 
-<% if @joined_activities.present?  %>
-<div class="activities_list">
-<h2>Joined Activities</h2>
-<% @joined_activities.each do |joined_activity| %>
-<%= render 'shared/card_activity_joined', activity: joined_activity %>
-<% end %>
-</div>
-<% end %>
+  <div class= "informations ">
+    <ul class="text-center" >
+      
+      <p>Age: <%= @user.age %> years old</p></li>
+      <p> Gender: <%= @user.gender %></p> </li>
+      <p> Language: <%= @user.language %></p> </li>
+      <p> <%= @user.description %> </p>
+    </ul>
+  </div>
+  <div class= "activities">
+  <% if @joined_activities.present?  %>
+  <div class="activities_list">
+  <h2>Joined Activities</h2>
+  <% @joined_activities.each do |joined_activity| %>
+  <%= render 'shared/card_activity_joined', activity: joined_activity %>
+  <% end %>
+  </div>
+  <% end %>
+  </div>
 
 
 
+  <div class= "activities">
+    <% if @created_activities.present?  %>
+    <div class="activities_list">
+    <h2>Created Activities</h2>
+    <% @joined_activities.each do |created_activity| %>
+    <%= render 'shared/card_activity_joined', activity: created_activity %>
+    <% end %>
+    <% end %>
+    </div>
+    </div>
 
+  <p class="create-button"> <%= link_to 'Go back to all activities', activities_path %> </p>
 
-<% if @created_activities.present?  %>
-<div class="activities_list">
-<h2>Created Activities</h2>
-<% @joined_activities.each do |created_activity| %>
-<%= render 'shared/card_activity_joined', activity: created_activity %>
-<% end %>
-<% end %>
-</div>
-
-<p> <%= link_to 'Go back to all activities', activities_path %> </p>
+<div>
