@@ -8,12 +8,12 @@
 </ul>
 
 <% if @joined_activities.present?  %>
+<div class="activities_list">
 <h2>Joined Activities</h2>
-
 <% @joined_activities.each do |joined_activity| %>
 <%= render 'shared/card_activity_joined', activity: joined_activity %>
 <% end %>
-
+</div>
 <% end %>
 
 
@@ -21,13 +21,12 @@
 
 
 <% if @created_activities.present?  %>
+<div class="activities_list">
 <h2>Created Activities</h2>
-
-
 <% @joined_activities.each do |created_activity| %>
 <%= render 'shared/card_activity_joined', activity: created_activity %>
 <% end %>
-
 <% end %>
+</div>
 
 <p> <%= link_to 'Go back to all activities', activities_path %> </p>
