@@ -1,0 +1,25 @@
+<%= link_to activity_path(item), :action => 'go' do %>
+<div class="card-activity">
+
+  <%#= link_to image_tag("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg", height: '120', width: '100%'), activity_path(item) %>
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg">
+  <div class="card-info list-inline-item">
+    <div>
+      <div><strong>Activity:</strong> <%= item.name %></div>
+      <!-- <div><strong>Location:</strong> <%= item.location%></div> -->
+      <div><strong>Date:</strong> <%= item.date %></div>
+    </div>
+  <div class="links">
+    <%#= link_to image_tag("https://kitt.lewagon.com/placeholder/users/sarahlafer" class="card-user avatar-bordered"), user_path(@activity.user) %>
+   <img src="https://kitt.lewagon.com/placeholder/users/sarahlafer" class="card-user avatar-bordered"/>
+    <div><%#= link_to "See details", activity_path(item) %></div>
+  <%# if check_authorized(item, current_user) %>
+      <div><%#= link_to "Modify", edit_activity_path(item) %></div>
+      <div><%#= link_to "Delete", activity_path(item) %></div>
+    <%# end %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
