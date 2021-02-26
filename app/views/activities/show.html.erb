@@ -19,7 +19,7 @@
     <tr>
       <td> <%= link_to joined_activity.user.username, user_path(joined_activity.user) %> </td>
       <td> <%= joined_activity.status %> </td>
-      <td> <%= simple_form_for [@activity, joined_activity], html: { class: 'form-inline' } do |f| %>
+      <td> <%= simple_form_for [@activity, joined_activity], html: { class: 'form-inline' }, remote: true do |f| %>
         <%= f.input :status, collection: JoinedActivity::STATUS %>
         <%= f.submit %>
         <% end %>
@@ -52,7 +52,7 @@
   </thead>
   <tbody>
     <% @all_messages. each do |message| %>
-      <tr>
+      <tr id="message-<%=message.id%>">
         <td colspan="1"> <%= message.user.username%></td>
         <td colspan="2"> <%= message.content %> </td>
       </tr>
@@ -66,7 +66,7 @@
   <p> Please sign in to leave a comment!</p>
   <% else %>
     <p> Please add your message below: </p>
-      <%= simple_form_for [@activity, @message] do |f| %>
+      <%= simple_form_for [@activity, @message], remote: true do |f| %>
       <%= f.input :content %>
       <%= f.submit %>
     <% end %>
