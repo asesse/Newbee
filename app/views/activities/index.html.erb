@@ -1,6 +1,6 @@
 <div class="filter-activity">
   <h1>What will you be doing today?</h1>
-    <%= simple_form_for(:query, url: activities_path, method: :get, html: {id: "filter"}) do |f| %>
+    <%= simple_form_for(:query, url: root_path, method: :get, html: {id: "filter"}) do |f| %>
           <%= f.input :category, collection: Category.all, selected: params.dig(:query, :category), include_blank: true %>
           <%= f.input :start_date, as: :date, html5: true, input_html: {value: params.dig(:query, :start_date)} %>
           <%= f.input :end_date, as: :date, html5: true, input_html: {value: params.dig(:query, :end_date)} %>
@@ -15,7 +15,9 @@
     <p class="create-button"> <%= link_to "Create an activity", new_activity_path %> </p>
     <div class="cards ">
       <% @activities.each do |element| %>
+        <% if current_user.nil? || element.allow?(current_user) %>
         <%= render 'shared/card', item: element %>
+         <% end %>
         <% end  %>
     </div>
   </div>
