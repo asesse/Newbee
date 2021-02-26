@@ -15,7 +15,9 @@
     <p class="create-button"> <%= link_to "Create an activity", new_activity_path %> </p>
     <div class="cards ">
       <% @activities.each do |element| %>
+        <% if current_user.nil? || element.allow?(current_user) %>
         <%= render 'shared/card', item: element %>
+         <% end %>
         <% end  %>
     </div>
   </div>
