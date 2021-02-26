@@ -5,7 +5,7 @@
           <%= f.input :start_date, as: :date, html5: true, input_html: {value: params.dig(:query, :start_date)} %>
           <%= f.input :end_date, as: :date, html5: true, input_html: {value: params.dig(:query, :end_date)} %>
           <%= f.input :user_search, input_html: {value: params.dig(:query, :user_search)}  %>
-          <%= f.submit class: "filter-btn" %>
+          <%= f.submit "Search", class: "filter-btn" %>
     <% end %>
 </div>
 
