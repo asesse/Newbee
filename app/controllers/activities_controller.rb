@@ -15,6 +15,7 @@ class ActivitiesController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { activity: position })
       }
     end
+    render "activities/index"
   end
 
   def show
