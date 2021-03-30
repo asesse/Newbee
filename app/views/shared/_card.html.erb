@@ -2,7 +2,24 @@
 <div class="card-activity">
 
   <%#= link_to image_tag("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg", height: '120', width: '100%'), activity_path(item) %>
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg">
+  <% if item.category.name == "sport" %>
+  <img src="https://res.cloudinary.com/dvsuei0bc/image/upload/v1617094561/jogging-4211946_1280_r9fty0.jpg">
+  <% elsif item.category.name == "cultural"%>
+  <img src="https://res.cloudinary.com/dvsuei0bc/image/upload/v1617094528/woman-1283009_1280_b1ks4f.jpg">
+  <% elsif item.category.name == "drink"%>
+  <img src="https://res.cloudinary.com/dvsuei0bc/image/upload/v1617094568/glasses-919071_1280_ntx6gp.jpg">
+  <% elsif item.category.name == "restaurant"%>
+  <img src="https://res.cloudinary.com/dvsuei0bc/image/upload/v1617094568/table-791167_1280_vukr6o.jpg">
+  <% elsif item.category.name == "culunary"%>
+  <img src="https://res.cloudinary.com/dvsuei0bc/image/upload/v1617094567/chef-657352_1280_b32gr0.jpg">
+  <% elsif item.category.name == "mechanical"%>
+  <img src="https://res.cloudinary.com/dvsuei0bc/image/upload/v1617094568/mechanics-424130_1280_oleulb.jpg">
+  <% elsif item.category.name == "manual"%>
+  <img src="https://res.cloudinary.com/dvsuei0bc/image/upload/v1617094568/potter-2106654_1280_ptg4dg.jpg">
+  <% else %>
+  <img src="https://res.cloudinary.com/dvsuei0bc/image/upload/v1617094568/question-2736480_1280_t1w4hh.jpg">
+
+  <% end %>
   <div class="card-info list-inline-item">
     <div>
       <div><strong>Activity:</strong> <%= item.name %></div>
