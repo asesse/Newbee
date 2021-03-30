@@ -7,10 +7,14 @@
   justify-content: space-around;
   text-align: center;
   color: $newbee-grey;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 #brand-name {
-  color: $newbee-grey;
+  color: $newbee-dark-purple;
   font-weight: bolder;
 }
 
