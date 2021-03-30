@@ -1,0 +1,33 @@
+.footer {
+  background-color: $footer;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  color: $newbee-grey;
+}
+
+#brand-name {
+  color: $newbee-grey;
+  font-weight: bolder;
+}
+
+.item > a > i {
+  color: $newbee-grey;
+  font-size: 25px;
+}
+
+.item > i {
+  color: $newbee-purple-pastel;
+}
+
+.item > a {
+  color: $newbee-purple-pastel;
+}
+
+.item > a:hover {
+  text-decoration: none;
+  a{color: $newbee-purple-pastel;}
+}
