@@ -1,28 +1,36 @@
 .show-container {
   margin: 10px;
-  display: flex;
-  justify-content: center;
   padding: 20px;
 }
 
+.row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
 
 .activity-info {
 
   color: black;
-  height: 300px;
   border-radius: 3px;
   padding: 5px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-
+  margin-right: 10px;
+  max-height: 320px;
   h6 {
     color: $purple;
     font-weight: bolder;
   }
 }
 
-
 .messages {
+  color: black;
+  border-radius: 3px;
+  padding: 5px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  max-height: 320px;
 
 }
 
@@ -32,5 +40,50 @@
   padding: 5px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  align-items: flex-end;
+}
+
+.user-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info {
+padding: auto 5px;
+}
+
+
+.scroll {
+  height: 160px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+.activity-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 5px 10px;
+  grid-gap: 3px;
+}
+
+
+.activity-button {
+  background-color: $purple;
+  a{color: white;}
+  text-align: center;
+  border-radius: 3px;
+  padding: 5px 10px;
+
+  &:hover {
+    a{text-decoration: none;}
+  }
+}
+
+.participants {
+  flex-grow: 1;
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 2px;
+  padding-bottom: 20px;
+  margin: auto 96px;
 }
