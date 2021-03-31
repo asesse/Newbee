@@ -7,10 +7,10 @@
   <div class= "informations ">
     <ul class="text-user" >
 
-      <div>Age: <%= @user.age %> years old</div>
-      <div> Gender: <%= @user.gender %></div>
-      <div> Language: <%= @user.language %></div>
       <div> <%= @user.description %> </div>
+      <div>Age: <%= @user.age %> years old</div>
+      <div> Gender: <%= @user.gender.capitalize! %></div>
+      <div> Language: <%= @user.language.capitalize! %></div>
     </ul>
   </div>
 
