@@ -1,6 +1,8 @@
 // Specific CSS for your home-page
 .whole-page {
   margin: 10px;
+  min-height: calc(100vh - 66.09px - 49px);
+  padding-bottom: 45px;
 }
 
 .homepage {
