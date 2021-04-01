@@ -29,15 +29,15 @@
 }
 
 .filter-activity {
-
   h1 {
     text-align: center;
-    font-family: $headers-font;
+    font-family: Montserrat;
     font-size: 400;
     font-weight: bolder;
-    color: $yellow;
+    color: $newbee-title-purple;
   }
 }
+
 
 #filter {
   display: flex;
@@ -52,6 +52,5 @@
   padding-top: 5px;
   padding-bottom: 5px;
 }
-
 
 
