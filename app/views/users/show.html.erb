@@ -1,12 +1,11 @@
 <div class= "container d-flex flex-column">
    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-    <h1> <%= @user.username %>'profile</h1>
+    <h1> <%= @user.username %>'s profile</h1>
     </div>
 
 
-  <div class= "informations ">
-    <ul class="text-user" >
-
+  <div class= "informations">
+    <ul class="text-user " >
       <div> <%= @user.description %> </div>
       <div>Age: <%= @user.age %> years old</div>
       <div> Gender: <%= @user.gender.capitalize! %></div>
@@ -14,32 +13,37 @@
     </ul>
   </div>
 
-  <div class= "activities">
-    <% if @joined_activities.present?  %>
-    <div>
-      <h2>Joined Activities</h2>
-      <div class="activities_list">
-        <% @joined_activities.each do |joined_activity| %>
-        <%= render 'shared/card_activity_joined', activity: joined_activity %>
+   <% if @joined_activities.present?  %>
+    <div class= "activities">
+      <div>
+        <h2>Joined Activities</h2>
+        <div class="activities_list">
+          <% @joined_activities.each do |joined_activity| %>
+          <%= render 'shared/card_activity_joined', activity: joined_activity %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+
+  <% if @created_activities.present?  %>
+    <div class= "activities">
+      <div>
+        <h2>Created Activities</h2>
+        <div class="activities_list">
+        <% @created_activities.each do |created_activity| %>
+        <%= render 'shared/card_activity_joined', activity: created_activity %>
         <% end %>
+        </div>
       </div>
     </div>
-    <% end %>
-  </div>
+   <% end %>
 
-  <div class= "activities">
-    <% if @created_activities.present?  %>
-    <div>
-      <h2>Created Activities</h2>
-      <div class="activities_list">
-      <% @created_activities.each do |created_activity| %>
-      <%= render 'shared/card_activity_joined', activity: created_activity %>
-      <% end %>
-      <% end %>
-      </div>
-    </div>
+  <div class="d-flex justify-content-center">
+    <p class="create-button w-50 p-3"> <%= link_to 'Go back to all activities', activities_path %> </p>
   </div>
-
-  <p class="create-button"> <%= link_to 'Go back to all activities', activities_path %> </p>
 
 <div>
+
+
